@@ -143,12 +143,5 @@ class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocat
     // detact url change
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         checkUrl()
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let myOtherVariable = appDelegate.myVariable
-        
-        print(myOtherVariable)
-
-        print(UIDevice.current.identifierForVendor?.uuidString)
     }
 }
