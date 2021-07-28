@@ -10,6 +10,8 @@ import WebKit
 import CoreLocation
 import SafariServices
 
+import Firebase
+
 class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocationManagerDelegate,SFSafariViewControllerDelegate {
     @IBOutlet var webView: WKWebView!
     var locationManager: CLLocationManager!
@@ -65,6 +67,8 @@ class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocat
             }
         }
     }
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -135,8 +139,16 @@ class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocat
         return nil
     }
     
+    
     // detact url change
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         checkUrl()
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let myOtherVariable = appDelegate.myVariable
+        
+        print(myOtherVariable)
+
+        print(UIDevice.current.identifierForVendor?.uuidString)
     }
 }

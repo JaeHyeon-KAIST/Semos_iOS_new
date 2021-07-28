@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		261D2F0A91C4BCE761708F41 /* Pods_Semos_SemosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 215DDFFCCD9B7EAF54284E58 /* Pods_Semos_SemosUITests.framework */; };
+		7A8FFB510C1D34A5A7F8EA14 /* Pods_SemosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7978E3A0FFE390888E4B399C /* Pods_SemosTests.framework */; };
+		CAA6022E4630CFC702254AC6 /* Pods_Semos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD1243B36E83054821F9D864 /* Pods_Semos.framework */; };
 		F82A209026985E8C00A16327 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82A208F26985E8C00A16327 /* AppDelegate.swift */; };
 		F82A209226985E8C00A16327 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82A209126985E8C00A16327 /* SceneDelegate.swift */; };
 		F82A209426985E8C00A16327 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82A209326985E8C00A16327 /* ViewController.swift */; };
@@ -16,6 +19,7 @@
 		F82A20A726985E9100A16327 /* CopyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82A20A626985E9100A16327 /* CopyTests.swift */; };
 		F82A20B226985E9100A16327 /* CopyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82A20B126985E9100A16327 /* CopyUITests.swift */; };
 		F82A20C6269868AA00A16327 /* launch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F82A20C5269868AA00A16327 /* launch.jpg */; };
+		F8EECDC426B0F0E2006F52B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F8EECDC326B0F0E2006F52B6 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1022FDB279920C3CEFBE37BB /* Pods-Semos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Semos.debug.xcconfig"; path = "Target Support Files/Pods-Semos/Pods-Semos.debug.xcconfig"; sourceTree = "<group>"; };
+		215DDFFCCD9B7EAF54284E58 /* Pods_Semos_SemosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Semos_SemosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		226C12629957D2323EA0E36E /* Pods-Semos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Semos.release.xcconfig"; path = "Target Support Files/Pods-Semos/Pods-Semos.release.xcconfig"; sourceTree = "<group>"; };
+		6E448F4DC73F2A3625D85522 /* Pods-SemosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SemosTests.debug.xcconfig"; path = "Target Support Files/Pods-SemosTests/Pods-SemosTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6FC4DAE1BD8C405181A480B5 /* Pods-SemosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SemosTests.release.xcconfig"; path = "Target Support Files/Pods-SemosTests/Pods-SemosTests.release.xcconfig"; sourceTree = "<group>"; };
+		7037E6B0E1EA307C57C11D26 /* Pods-Semos-SemosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Semos-SemosUITests.release.xcconfig"; path = "Target Support Files/Pods-Semos-SemosUITests/Pods-Semos-SemosUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7978E3A0FFE390888E4B399C /* Pods_SemosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SemosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		97EDB9225FCB34F135C59B35 /* Pods-Semos-SemosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Semos-SemosUITests.debug.xcconfig"; path = "Target Support Files/Pods-Semos-SemosUITests/Pods-Semos-SemosUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		AD1243B36E83054821F9D864 /* Pods_Semos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Semos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F82A208C26985E8C00A16327 /* Semos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Semos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F82A208F26985E8C00A16327 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F82A209126985E8C00A16327 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,7 +63,9 @@
 		F82A20AD26985E9100A16327 /* SemosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SemosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F82A20B126985E9100A16327 /* CopyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyUITests.swift; sourceTree = "<group>"; };
 		F82A20B326985E9100A16327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F82A20C5269868AA00A16327 /* launch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = launch.jpg; path = ../../../Downloads/launch.jpg; sourceTree = "<group>"; };
+		F82A20C5269868AA00A16327 /* launch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = launch.jpg; path = ../launch.jpg; sourceTree = "<group>"; };
+		F8EECDC326B0F0E2006F52B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F8EECDC526B0F4E1006F52B6 /* Semos.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Semos.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAA6022E4630CFC702254AC6 /* Pods_Semos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A8FFB510C1D34A5A7F8EA14 /* Pods_SemosTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +89,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				261D2F0A91C4BCE761708F41 /* Pods_Semos_SemosUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		681AE7D2C6B792AEEB011209 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AD1243B36E83054821F9D864 /* Pods_Semos.framework */,
+				215DDFFCCD9B7EAF54284E58 /* Pods_Semos_SemosUITests.framework */,
+				7978E3A0FFE390888E4B399C /* Pods_SemosTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF2C6CE43AC2A505A8552AA8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1022FDB279920C3CEFBE37BB /* Pods-Semos.debug.xcconfig */,
+				226C12629957D2323EA0E36E /* Pods-Semos.release.xcconfig */,
+				97EDB9225FCB34F135C59B35 /* Pods-Semos-SemosUITests.debug.xcconfig */,
+				7037E6B0E1EA307C57C11D26 /* Pods-Semos-SemosUITests.release.xcconfig */,
+				6E448F4DC73F2A3625D85522 /* Pods-SemosTests.debug.xcconfig */,
+				6FC4DAE1BD8C405181A480B5 /* Pods-SemosTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		F82A208326985E8C00A16327 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +126,8 @@
 				F82A20A526985E9100A16327 /* CopyTests */,
 				F82A20B026985E9100A16327 /* CopyUITests */,
 				F82A208D26985E8C00A16327 /* Products */,
+				BF2C6CE43AC2A505A8552AA8 /* Pods */,
+				681AE7D2C6B792AEEB011209 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +144,7 @@
 		F82A208E26985E8C00A16327 /* Semos */ = {
 			isa = PBXGroup;
 			children = (
+				F8EECDC526B0F4E1006F52B6 /* Semos.entitlements */,
 				F82A20C5269868AA00A16327 /* launch.jpg */,
 				F82A208F26985E8C00A16327 /* AppDelegate.swift */,
 				F82A209126985E8C00A16327 /* SceneDelegate.swift */,
@@ -109,6 +153,7 @@
 				F82A209826985E9000A16327 /* Assets.xcassets */,
 				F82A209A26985E9000A16327 /* LaunchScreen.storyboard */,
 				F82A209D26985E9000A16327 /* Info.plist */,
+				F8EECDC326B0F0E2006F52B6 /* GoogleService-Info.plist */,
 			);
 			path = Semos;
 			sourceTree = "<group>";
@@ -140,9 +185,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F82A20B626985E9100A16327 /* Build configuration list for PBXNativeTarget "Semos" */;
 			buildPhases = (
+				601ED149B9BED1A76862E0B5 /* [CP] Check Pods Manifest.lock */,
 				F82A208826985E8C00A16327 /* Sources */,
 				F82A208926985E8C00A16327 /* Frameworks */,
 				F82A208A26985E8C00A16327 /* Resources */,
+				93251B26BDFF04DF18F7EC8D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -157,6 +204,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F82A20B926985E9100A16327 /* Build configuration list for PBXNativeTarget "SemosTests" */;
 			buildPhases = (
+				05C911F49182E179F6615002 /* [CP] Check Pods Manifest.lock */,
 				F82A209E26985E9100A16327 /* Sources */,
 				F82A209F26985E9100A16327 /* Frameworks */,
 				F82A20A026985E9100A16327 /* Resources */,
@@ -175,9 +223,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F82A20BC26985E9100A16327 /* Build configuration list for PBXNativeTarget "SemosUITests" */;
 			buildPhases = (
+				D86D5E1A443FD8064B8DE073 /* [CP] Check Pods Manifest.lock */,
 				F82A20A926985E9100A16327 /* Sources */,
 				F82A20AA26985E9100A16327 /* Frameworks */,
 				F82A20AB26985E9100A16327 /* Resources */,
+				A0056E6F11EBFA537D8EB2A5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -238,6 +288,7 @@
 			files = (
 				F82A20C6269868AA00A16327 /* launch.jpg in Resources */,
 				F82A209C26985E9000A16327 /* LaunchScreen.storyboard in Resources */,
+				F8EECDC426B0F0E2006F52B6 /* GoogleService-Info.plist in Resources */,
 				F82A209926985E9000A16327 /* Assets.xcassets in Resources */,
 				F82A209726985E8C00A16327 /* Main.storyboard in Resources */,
 			);
@@ -258,6 +309,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		05C911F49182E179F6615002 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SemosTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		601ED149B9BED1A76862E0B5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Semos-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93251B26BDFF04DF18F7EC8D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Semos/Pods-Semos-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Semos/Pods-Semos-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Semos/Pods-Semos-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A0056E6F11EBFA537D8EB2A5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Semos-SemosUITests/Pods-Semos-SemosUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Semos-SemosUITests/Pods-Semos-SemosUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Semos-SemosUITests/Pods-Semos-SemosUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D86D5E1A443FD8064B8DE073 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Semos-SemosUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F82A208826985E8C00A16327 /* Sources */ = {
@@ -439,17 +593,21 @@
 		};
 		F82A20B726985E9100A16327 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1022FDB279920C3CEFBE37BB /* Pods-Semos.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Semos/Semos.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6ZF47C5BT2;
+				CURRENT_PROJECT_VERSION = 0.1;
+				DEVELOPMENT_TEAM = 7U9JVRTCWK;
 				INFOPLIST_FILE = Semos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = JaeHyeon.Semos;
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.reports.semos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -458,17 +616,21 @@
 		};
 		F82A20B826985E9100A16327 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 226C12629957D2323EA0E36E /* Pods-Semos.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Semos/Semos.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6ZF47C5BT2;
+				CURRENT_PROJECT_VERSION = 0.1;
+				DEVELOPMENT_TEAM = 7U9JVRTCWK;
 				INFOPLIST_FILE = Semos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = JaeHyeon.Semos;
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.reports.semos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -477,6 +639,7 @@
 		};
 		F82A20BA26985E9100A16327 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E448F4DC73F2A3625D85522 /* Pods-SemosTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -498,6 +661,7 @@
 		};
 		F82A20BB26985E9100A16327 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FC4DAE1BD8C405181A480B5 /* Pods-SemosTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -519,6 +683,7 @@
 		};
 		F82A20BD26985E9100A16327 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97EDB9225FCB34F135C59B35 /* Pods-Semos-SemosUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -538,6 +703,7 @@
 		};
 		F82A20BE26985E9100A16327 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7037E6B0E1EA307C57C11D26 /* Pods-Semos-SemosUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
