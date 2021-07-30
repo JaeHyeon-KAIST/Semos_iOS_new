@@ -95,11 +95,15 @@ class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocat
                 return nil
             }
         }
-        popupWebView = WKWebView(frame: view.bounds, configuration: configuration)
+        
+        let rect: CGRect = .init(x: 0, y: view.safeAreaInsets.top, width: webView.frame.width, height: webView.frame.height)
+        
+        popupWebView = WKWebView(frame: rect, configuration: configuration)
         popupWebView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         popupWebView?.navigationDelegate = self
         popupWebView?.uiDelegate = self
         popupWebView?.scrollView.isScrollEnabled = false
+        popupWebView?.addObserver(self, forKeyPath: "URL", options: .new, context: nil)
         view.addSubview(popupWebView!)
         return popupWebView!
     }
@@ -108,9 +112,14 @@ class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocat
         webView.removeFromSuperview()
         popupWebView = nil
     }
-
-    // detact url change
+    
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if (popupWebView?.url! == URL(string: "https://semos.kr/")) {
+            popupWebView!.removeFromSuperview()
+            popupWebView = nil
+            self.view.bringSubviewToFront(self.webView)
+            webView.goBack()
+        }
         self.webView?.allowsBackForwardNavigationGestures = backfoward.contains(webView.url!) ? false : true
         // if it is one of the main page, do not allow backward gesture
         let temp = webView.url?.absoluteString
