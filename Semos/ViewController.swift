@@ -8,73 +8,28 @@
 import UIKit
 import WebKit
 import CoreLocation
-import SafariServices
 
 import Firebase
 
-class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocationManagerDelegate,SFSafariViewControllerDelegate {
+class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocationManagerDelegate {
     @IBOutlet var webView: WKWebView!
     var locationManager: CLLocationManager!
     
-    var tuple = [
+    var popupWebView: WKWebView?
+    
+    var backfoward = [
         URL(string: "https://semos.kr/"),
         URL(string: "https://semos.kr/location"),
         URL(string: "https://semos.kr/market"),
         URL(string: "https://semos.kr/my_page"),
     ]
-    
-    @objc func checkUrl(){
-        self.webView?.allowsBackForwardNavigationGestures = tuple.contains(webView.url!) ? false : true
-        // if it is one of the main page, do not allow backward gesture
-        let temp = webView.url?.absoluteString
-        if (temp!.contains("payment"))
-        {
-            // if it is payment site, open it with SVC due to kakaopay
-            let tmp = webView.url!
-            webView.goBack()
-            webView.load(URLRequest(url: URL(string: "https://semos.kr/")!))
-            let safariViewController = SFSafariViewController(url: tmp)
-            safariViewController.delegate = self
-            safariViewController.modalPresentationStyle = .automatic
-            // to make SVC pop-up
-            self.present(safariViewController, animated: true, completion: nil)
-        }
-    }
-    
-    
-    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-        webView.load(URLRequest(url: URL(string: "https://semos.kr/")!))
-    }
-    
-    // if there is a gesture at main page, change view
-    @objc func respondToSwipeGesture(_ gesture: UIGestureRecognizer) {
-        if (tuple.contains(webView.url!)){
-            if let swipeGesture = gesture as? UISwipeGestureRecognizer{
-                switch swipeGesture.direction {
-                    case UISwipeGestureRecognizer.Direction.left :
-                        let index = tuple.firstIndex(of: webView.url!)!
-                        if (index < 3) {
-                            webView.load(URLRequest(url: tuple[index + 1]!))
-                        }
-                    case UISwipeGestureRecognizer.Direction.right :
-                        let index = tuple.firstIndex(of: webView.url!)!
-                        if (index > 0) {
-                            webView.load(URLRequest(url: tuple[index - 1]!))
-                        }
-                    default:
-                        break
-                }
-            }
-        }
-    }
-    
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager = CLLocationManager()
         locationManager.delegate = self
         self.webView.uiDelegate = self
+        webView.navigationDelegate = self
         
         HTTPCookieStorage.shared.cookieAcceptPolicy = HTTPCookie.AcceptPolicy.always
         
@@ -85,13 +40,6 @@ class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocat
 
         WKWebpagePreferences().allowsContentJavaScript = true
         self.webView.load(request)
-        
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.respondToSwipeGesture(_:)))
-        swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
-        self.view.addGestureRecognizer(swipeLeft)
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.respondToSwipeGesture(_:)))
-        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
-        self.view.addGestureRecognizer(swipeRight)
         
         // set status bar white
         if #available(iOS 13.0, *) {
@@ -116,6 +64,15 @@ class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocat
         }
     }
     
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if (navigationAction.request.url?.scheme == "tel" || navigationAction.request.url?.scheme == "kakaotalk") {
+            UIApplication.shared.open(navigationAction.request.url!)
+            decisionHandler(.cancel)
+      } else {
+            decisionHandler(.allow)
+      }
+    }
+    
     // set status bar letter black
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .darkContent
@@ -127,21 +84,37 @@ class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocat
         print("alert")
         let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action) in completionHandler() }))
-        self.present(alertController, animated: true, completion: nil) }
+        self.present(alertController, animated: true, completion: nil)
+    }
 
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         if navigationAction.targetFrame == nil {
             let tmp = navigationAction.request.url?.absoluteString
             if (tmp!.contains("chat")){
                 UIApplication.shared.open(navigationAction.request.url!, options: [:])
+                return nil
             }
         }
-        return nil
+        popupWebView = WKWebView(frame: view.bounds, configuration: configuration)
+        popupWebView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        popupWebView?.navigationDelegate = self
+        popupWebView?.uiDelegate = self
+        popupWebView?.scrollView.isScrollEnabled = false
+        view.addSubview(popupWebView!)
+        return popupWebView!
     }
     
-    
+    func webViewDidClose(_ webView: WKWebView) {
+        webView.removeFromSuperview()
+        popupWebView = nil
+    }
+
     // detact url change
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        checkUrl()
+        self.webView?.allowsBackForwardNavigationGestures = backfoward.contains(webView.url!) ? false : true
+        // if it is one of the main page, do not allow backward gesture
+        let temp = webView.url?.absoluteString
+        webView.scrollView.isScrollEnabled = (webView.url! == URL(string: "https://semos.kr/location") || temp!.contains("partner_page_img_all")) ? false : true
+        // disable scroll at location page
     }
 }
