@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             options: authOptions,
             completionHandler: {_, _ in })
         application.registerForRemoteNotifications()
+        UserDefaults.standard.register(defaults: ["UserAgent" : "Semos_webview_IOS"])
         
         sleep(1)
         return true
