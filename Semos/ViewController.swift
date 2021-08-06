@@ -65,7 +65,7 @@ class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocat
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        if (navigationAction.request.url?.scheme == "tel" || navigationAction.request.url?.scheme == "kakaotalk") {
+        if (navigationAction.request.url?.scheme == "tel" || navigationAction.request.url?.scheme == "kakaotalk" || navigationAction.request.url!.absoluteString.contains("talk-apps.kakao") || navigationAction.request.url?.scheme == "kakaolink") {
             UIApplication.shared.open(navigationAction.request.url!)
             decisionHandler(.cancel)
       } else {
@@ -90,6 +90,7 @@ class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocat
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         if navigationAction.targetFrame == nil {
             let tmp = navigationAction.request.url?.absoluteString
+            print(tmp!)
             if (tmp!.contains("chat")){
                 UIApplication.shared.open(navigationAction.request.url!, options: [:])
                 return nil
