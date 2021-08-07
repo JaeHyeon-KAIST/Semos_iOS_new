@@ -11,6 +11,10 @@ import CoreLocation
 
 import Firebase
 
+import KakaoSDKCommon
+import KakaoSDKAuth
+import KakaoSDKUser
+
 class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocationManagerDelegate {
     @IBOutlet var webView: WKWebView!
     var locationManager: CLLocationManager!
@@ -66,8 +70,13 @@ class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocat
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         if (navigationAction.request.url?.scheme == "tel" || navigationAction.request.url?.scheme == "kakaotalk" || navigationAction.request.url!.absoluteString.contains("talk-apps.kakao") || navigationAction.request.url?.scheme == "kakaolink") {
-            UIApplication.shared.open(navigationAction.request.url!)
-            decisionHandler(.cancel)
+            if (navigationAction.request.url!.absoluteString.contains("talk-apps.kakao") && !UserApi.isKakaoTalkLoginAvailable() ) {
+                decisionHandler(.allow)
+            }
+            else {
+                UIApplication.shared.open(navigationAction.request.url!)
+                decisionHandler(.cancel)
+            }
       } else {
             decisionHandler(.allow)
       }
@@ -79,13 +88,26 @@ class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocat
     }
     
     // alert
-    func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String,
-                 initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void){
-        print("alert")
+    func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void){
         let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action) in completionHandler() }))
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    // confirm
+    func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
+        let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel) { _ in
+            completionHandler(false)
+        }
+        let okAction = UIAlertAction(title: "확인", style: .default) { _ in
+            completionHandler(true)
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
 
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         if navigationAction.targetFrame == nil {
