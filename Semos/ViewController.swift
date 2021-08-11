@@ -8,6 +8,7 @@
 import UIKit
 import WebKit
 import CoreLocation
+import Network
 
 import Firebase
 
@@ -20,6 +21,8 @@ class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocat
     var locationManager: CLLocationManager!
     
     var popupWebView: WKWebView?
+    
+    var network = true
     
     var backfoward = [
         URL(string: "https://semos.kr/"),
@@ -65,6 +68,11 @@ class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocat
         } else {
             let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
             statusBar?.backgroundColor = UIColor.white
+        }
+        let monitor = NWPathMonitor()
+        monitor.start(queue: DispatchQueue.global())
+        monitor.pathUpdateHandler = { [self] path in
+            network = (path.status == .satisfied ? true : false)
         }
     }
     
@@ -112,7 +120,6 @@ class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocat
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         if navigationAction.targetFrame == nil {
             let tmp = navigationAction.request.url?.absoluteString
-            print(tmp!)
             if (tmp!.contains("chat")){
                 UIApplication.shared.open(navigationAction.request.url!, options: [:])
                 return nil
@@ -143,10 +150,21 @@ class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocat
             self.view.bringSubviewToFront(self.webView)
             webView.goBack()
         }
-        self.webView?.allowsBackForwardNavigationGestures = backfoward.contains(webView.url!) ? false : true
         // if it is one of the main page, do not allow backward gesture
+        self.webView?.allowsBackForwardNavigationGestures = backfoward.contains(webView.url!) ? false : true
+        // disable scroll at location page
         let temp = webView.url?.absoluteString
         webView.scrollView.isScrollEnabled = (webView.url! == URL(string: "https://semos.kr/location") || temp!.contains("partner_page_img_all")) ? false : true
-        // disable scroll at location page
+        
+        if (!network) {
+            let alertController = UIAlertController(title: "셀룰러 데이터가 꺼져 있어요!", message: "데이터에 접근하려면, 셀룰러 데이터를 켜거나 Wi-Fi를 사용해주세요 :)", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "확인", style: .cancel) {_ in }
+            let okAction = UIAlertAction(title: "설정", style: .default) { _ in
+                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+            }
+            alertController.addAction(cancelAction)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
 }
