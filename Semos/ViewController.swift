@@ -30,7 +30,6 @@ class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocat
     var backfoward = [
         URL(string: "https://semos.kr/"),
         URL(string: "https://semos.kr/location"),
-        URL(string: "https://semos.kr/market"),
         URL(string: "https://semos.kr/my_page"),
     ]
 
@@ -176,7 +175,8 @@ class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocat
             webView.goBack()
         }
         // if it is one of the main page, do not allow backward gesture
-        self.webView?.allowsBackForwardNavigationGestures = backfoward.contains(webView.url!) ? false : true
+        let tmp = webView.url!.absoluteString
+        self.webView?.allowsBackForwardNavigationGestures = (backfoward.contains(webView.url!) || tmp.contains("https://semos.kr/crew_list")) ? false : true
         // disable scroll at location page
         let temp = webView.url?.absoluteString
         webView.scrollView.isScrollEnabled = (webView.url! == URL(string: "https://semos.kr/location") || temp!.contains("partner_page_img_all")) ? false : true
