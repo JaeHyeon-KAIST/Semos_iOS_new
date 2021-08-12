@@ -40,14 +40,6 @@ class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocat
         self.webView.uiDelegate = self
         webView.navigationDelegate = self
         
-        print(UIDevice.current.userInterfaceIdiom)
-        if UIDevice.current.userInterfaceIdiom == .phone {
-           print("running on iPhone")
-        }
-        if UIDevice.current.userInterfaceIdiom == .pad {
-           print("running on iPad")
-        }
-        
         HTTPCookieStorage.shared.cookieAcceptPolicy = HTTPCookie.AcceptPolicy.always
         
         webView.addObserver(self, forKeyPath: "URL", options: .new, context: nil)
@@ -92,12 +84,20 @@ class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocat
                 decisionHandler(.allow)
             }
             else {
-                UIApplication.shared.open(navigationAction.request.url!)
-                decisionHandler(.cancel)
+                if (UserApi.isKakaoTalkLoginAvailable()) {
+                    UIApplication.shared.open(navigationAction.request.url!)
+                    decisionHandler(.cancel)
+                } else {
+                    let alertController = UIAlertController(title: "", message: "카카오톡이 설치되어 있지 않습니다 :)\n설치 후 문의해주세요", preferredStyle: .alert)
+                    let Action = UIAlertAction(title: "확인", style: .cancel) {_ in }
+                    alertController.addAction(Action)
+                    self.present(alertController, animated: true, completion: nil)
+                    decisionHandler(.cancel)
+                }
             }
-      } else {
+        } else {
             decisionHandler(.allow)
-      }
+        }
     }
     
     // set status bar letter black
@@ -125,13 +125,6 @@ class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocat
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
     }
-    
-    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-        let alertController = UIAlertController(title: "셀룰러 데이터가 꺼져 있어요!", message: "데이터에 접근하려면, 셀룰러 데이터를 켜거나 Wi-Fi를 사용해주세요 :)", preferredStyle: .alert)
-        let Action = UIAlertAction(title: "확인", style: .cancel) {_ in }
-        alertController.addAction(Action)
-        self.present(alertController, animated: true, completion: nil)
-    }
 
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         if navigationAction.targetFrame == nil {
@@ -141,7 +134,7 @@ class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocat
                     UIApplication.shared.open(URL(string: "kakaoplus://plusfriend/chat/_YxfVxfK")!)
                     return nil
                 } else {
-                    let alertController = UIAlertController(title: "카카오톡이 설치되어 있지 않습니다!", message: "", preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "", message: "카카오톡이 설치되어 있지 않습니다 :)\n설치 후 문의해주세요", preferredStyle: .alert)
                     let Action = UIAlertAction(title: "확인", style: .cancel) {_ in }
                     alertController.addAction(Action)
                     self.present(alertController, animated: true, completion: nil)
