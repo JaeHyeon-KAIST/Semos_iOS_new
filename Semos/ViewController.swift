@@ -76,6 +76,14 @@ class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocat
         monitor.pathUpdateHandler = { [self] path in
             network = (path.status == .satisfied ? true : false)
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(moveEventPage), name: Notification.Name("EventPageIdentifier"), object: nil)
+    }
+    
+    @objc func moveEventPage() {
+        let preferences = UserDefaults.standard
+        if let seq:String = preferences.object(forKey: "event_seq") as? String {
+            webView.load(URLRequest(url: URL(string: seq.split(separator: "?").map(String.init)[1])!))
+        }
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
@@ -161,6 +169,7 @@ class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocat
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        print("1")
         if (popupWebView?.url! == URL(string: "https://semos.kr/")) {
             popupWebView!.removeFromSuperview()
             popupWebView = nil

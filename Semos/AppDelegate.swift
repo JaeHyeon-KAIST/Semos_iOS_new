@@ -9,14 +9,18 @@ import UIKit
 import Firebase
 import FirebaseMessaging
 import UserNotifications
+import KakaoSDKCommon
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        sleep(1)
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
+        
+        KakaoSDKCommon.initSDK(appKey: "6bfaf35bab7cdcfc2eb3b5e63ce83bbe")
 
         UNUserNotificationCenter.current().delegate = self
         
@@ -26,7 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             completionHandler: {_, _ in })
         application.registerForRemoteNotifications()
         
-        sleep(1)
         return true
     }
 
