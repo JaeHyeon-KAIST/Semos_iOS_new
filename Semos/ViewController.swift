@@ -96,11 +96,19 @@ class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocat
                     UIApplication.shared.open(navigationAction.request.url!)
                     decisionHandler(.cancel)
                 } else {
-                    let alertController = UIAlertController(title: "", message: "카카오톡이 설치되어 있지 않습니다 :)\n설치 후 문의해주세요", preferredStyle: .alert)
-                    let Action = UIAlertAction(title: "확인", style: .cancel) {_ in }
-                    alertController.addAction(Action)
-                    self.present(alertController, animated: true, completion: nil)
-                    decisionHandler(.cancel)
+                    if (webView.url!.absoluteString.contains("my_page")) {
+                        let alertController = UIAlertController(title: "", message: "카카오톡이 설치되어 있지 않습니다 :)\n설치 후 문의해주세요", preferredStyle: .alert)
+                        let Action = UIAlertAction(title: "확인", style: .cancel) {_ in }
+                        alertController.addAction(Action)
+                        self.present(alertController, animated: true, completion: nil)
+                        decisionHandler(.cancel)
+                    } else {
+                        let alertController = UIAlertController(title: "", message: "카카오톡이 설치되어 있지 않습니다 :)", preferredStyle: .alert)
+                        let Action = UIAlertAction(title: "확인", style: .cancel) {_ in }
+                        alertController.addAction(Action)
+                        self.present(alertController, animated: true, completion: nil)
+                        decisionHandler(.cancel)
+                    }
                 }
             }
         } else {
@@ -169,7 +177,6 @@ class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocat
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        print("1")
         if (popupWebView?.url! == URL(string: "https://semos.kr/")) {
             popupWebView!.removeFromSuperview()
             popupWebView = nil
