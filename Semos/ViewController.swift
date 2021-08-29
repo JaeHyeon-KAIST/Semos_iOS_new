@@ -96,7 +96,7 @@ class ViewController: UIViewController,WKUIDelegate,WKNavigationDelegate,CLLocat
                     UIApplication.shared.open(navigationAction.request.url!)
                     decisionHandler(.cancel)
                 } else {
-                    if (webView.url!.absoluteString.contains("my_page")) {
+                    if (webView.url!.absoluteString.contains("my_page") && navigationAction.request.url?.scheme == "https" ) {
                         let alertController = UIAlertController(title: "", message: "카카오톡이 설치되어 있지 않습니다 :)\n설치 후 문의해주세요", preferredStyle: .alert)
                         let Action = UIAlertAction(title: "확인", style: .cancel) {_ in }
                         alertController.addAction(Action)
